@@ -35,7 +35,7 @@
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "InstallSPLConverter.exe"
+OutFile "InstallWhoIsMissing.exe"
 InstallDir "$PROGRAMFILES\Whereskenneth\WhoIsMissing"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
@@ -55,9 +55,7 @@ Section "MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
 
- File "SPLConverter.exe"
- File "config.yaml"
- File "msvcr100.dll"
+ File "WhoIsMissing.exe"
 
 SectionEnd
 
@@ -66,13 +64,13 @@ Section -Post
   WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\WhoIsMissing.exe"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "${PRODUCT_NAME}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\uninst.exe"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\SPLConverter.exe"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\WhoIsMissing.exe"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
   WriteRegExpandStr HKCR "SystemFileAssociations\.csv" "" ""
   WriteRegExpandStr HKCR "SystemFileAssociations\.csv\shell" "" ""
-  WriteRegExpandStr HKCR "SystemFileAssociations\.csv\shell\WhoIsMissing" "" "Convert SPL"
+  WriteRegExpandStr HKCR "SystemFileAssociations\.csv\shell\WhoIsMissing" "" "WhoIsMissing"
   WriteRegExpandStr HKCR "SystemFileAssociations\.csv\shell\WhoIsMissing\command" "" "$\"$INSTDIR\WhoIsMissing.exe$\" $\"%1$\""
 SectionEnd
 

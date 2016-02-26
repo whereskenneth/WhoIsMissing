@@ -2,6 +2,7 @@ import os
 import sys
 import csv
 import ctypes
+import glob
 
 
 class WhoIsMissing(object):
@@ -12,7 +13,7 @@ class WhoIsMissing(object):
             self.check_csv_is_from_ascent()
             self.show_missing_files()
         except Exception as e:
-            self.alert(e)
+            self.alert(str(e))
 
     def check_csv_is_from_ascent(self):
         with open(self.csv_path, "r") as f:
@@ -27,14 +28,18 @@ class WhoIsMissing(object):
         if missing_filenames:
             missing_filenames.insert(0, "The following files could not be found:\n\n")
             self.alert('\n'.join(missing_filenames))
+        else:
+            self.alert("All files appear to be present and accounted for.")
 
     def get_missing_filenames(self):
-        csv_contents = [l for l in csv.DictReader(open(self.csv_path), "r")]
+        csv_contents = [l for l in csv.DictReader(open(self.csv_path, "r"))]
         missed_filenames = []
+        batch_directory = os.path.dirname(self.csv_path)
+        files = [os.path.splitext(os.path.basename(f))[0] for f in glob.glob(batch_directory + '/*')]
+        print('\n'.join(files))
         for line in csv_contents:
             filename = line['filename']
-            file_path = os.path.join(os.path.dirname(os.path.abspath(self.csv_path)), filename)
-            if not os.path.exists(file_path):
+            if filename not in files:
                 missed_filenames.append(filename)
         return missed_filenames
 
@@ -45,7 +50,7 @@ class WhoIsMissing(object):
 
 def main():
     csv_file = sys.argv[1]
-    WhoIsMissing(os.path.abspath(csv_file))
+    WhoIsMissing(csv_file)
 
 if __name__ == "__main__":
     main()
