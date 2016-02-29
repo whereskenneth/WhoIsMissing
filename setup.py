@@ -9,9 +9,9 @@ class Target:
         self.__dict__.update(kw)
 
 target = Target(
-    product_name='whereskenneth WhoIsMissing',
+    product_name='WhoIsMissing',
     description='A utility for examining ASCENT sequence files and displaying the missing injections.',
-    script='who_is_missing.py',
+    script='WhoIsMissing.py',
     dest_base='WhoIsMissing',
     version='0.1',
     company_name='Whereskenneth Free Software',
@@ -19,7 +19,7 @@ target = Target(
     name='Whereskenneth.WhoIsMissing'
 )
 
-setup(name='who_is_missing',
+setup(name='WhoIsMissing',
       author='Kenneth Tussey',
       author_email='whereskenneth@gmail.com',
       version='0.1',
