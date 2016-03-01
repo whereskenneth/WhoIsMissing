@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "WhoIsMissing"
-!define PRODUCT_VERSION "0.1"
+!define PRODUCT_VERSION "0.2"
 !define PRODUCT_PUBLISHER "whereskenneth"
 !define PRODUCT_WEB_SITE "https://github.com/whereskenneth"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\WhoIsMissing.exe"
@@ -70,7 +70,7 @@ Section -Post
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
   WriteRegExpandStr HKCR "SystemFileAssociations\.csv" "" ""
   WriteRegExpandStr HKCR "SystemFileAssociations\.csv\shell" "" ""
-  WriteRegExpandStr HKCR "SystemFileAssociations\.csv\shell\WhoIsMissing" "" "WhoIsMissing"
+  WriteRegExpandStr HKCR "SystemFileAssociations\.csv\shell\WhoIsMissing" "" "Who Is Missing?"
   WriteRegExpandStr HKCR "SystemFileAssociations\.csv\shell\WhoIsMissing\command" "" "$\"$INSTDIR\WhoIsMissing.exe$\" $\"%1$\""
 SectionEnd
 
