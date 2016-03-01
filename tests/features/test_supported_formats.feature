@@ -36,3 +36,11 @@ Feature: Test support for various instrument formats
     | ['2', '3']         |
     | ['1', '2', '3']    |
 
+
+  Scenario: Ensure case sensitivity
+     Given an Ascent csv file with minimum required columns
+    And it has a full row with {"filename": "HECKEL_and_jekyl"}
+    When I add all injections in the sequence file with a .mzData extension
+    And I remove injections ['HECKEL_and_jekyl']
+    Then I should have missing injections: ['HECKEL_and_jekyl']
+

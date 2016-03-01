@@ -47,11 +47,11 @@ class WhoIsMissing(object):
         csv_contents = [l for l in csv.DictReader(open(self.csv_path, "r"))]
         missed_filenames = []
         batch_directory = os.path.dirname(self.csv_path)
-        files = [os.path.basename(f).split('.')[0] for f in glob.glob(batch_directory + '/*')]
+        files = [os.path.basename(f).split('.')[0].lower() for f in glob.glob(batch_directory + '/*')]
         for line in csv_contents:
             filename = line['filename'].lower()
             if filename not in files:
-                missed_filenames.append(filename)
+                missed_filenames.append(line['filename'])
         return missed_filenames
 
 
