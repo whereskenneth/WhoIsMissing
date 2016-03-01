@@ -6,9 +6,9 @@ def before_all(context):
     context.tmp_dir = tempfile.TemporaryDirectory(dir=os.path.abspath(os.path.curdir))
     context.old_injection_files = []
 
+
 def after_all(context):
-    pass
-    # context.tmp_dir.cleanup()
+    context.tmp_dir.cleanup()
 
 
 def before_tag(context, tag):

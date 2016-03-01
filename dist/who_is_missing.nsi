@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "WhoIsMissing"
-!define PRODUCT_VERSION "0.2"
+!define PRODUCT_VERSION "${VERSION}"
 !define PRODUCT_PUBLISHER "whereskenneth"
 !define PRODUCT_WEB_SITE "https://github.com/whereskenneth"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\WhoIsMissing.exe"
@@ -35,7 +35,7 @@
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "InstallWhoIsMissing.exe"
+OutFile "InstallWhoIsMissing-${VERSION}.exe"
 InstallDir "$PROGRAMFILES\Whereskenneth\WhoIsMissing"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show

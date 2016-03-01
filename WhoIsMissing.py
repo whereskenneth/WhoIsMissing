@@ -2,12 +2,13 @@ import os
 import sys
 import csv
 import glob
+from __version__ import __version__
 
 
 def alert(msg):
     try:
         import ctypes
-        ctypes.windll.user32.MessageBoxW(0, str(msg), "Info", 0)
+        ctypes.windll.user32.MessageBoxW(0, str(msg), "Who Is Missing v" + __version__, 0)
     except (AttributeError, ImportError) as e:
         print(msg)
 

@@ -1,6 +1,7 @@
 __author__ = 'ktussey'
 from setuptools import find_packages
 from distutils.core import setup
+from __version__ import __version__
 import py2exe
 
 
@@ -13,7 +14,7 @@ target = Target(
     description='A utility for examining ASCENT sequence files and displaying the missing injections.',
     script='WhoIsMissing.py',
     dest_base='WhoIsMissing',
-    version='0.1',
+    version=__version__,
     company_name='Whereskenneth Free Software',
     copyright='',
     name='Whereskenneth.WhoIsMissing'
@@ -22,7 +23,7 @@ target = Target(
 setup(name='WhoIsMissing',
       author='Kenneth Tussey',
       author_email='whereskenneth@gmail.com',
-      version='0.2',
+      version=__version__,
       description='A utility for examining ASCENT sequence files and displaying the missing injections.',
       packages=find_packages(),
       requires=['behave', 'py2exe'],
